@@ -8,11 +8,8 @@ const pdf = require('html-pdf')
 const fs = require('fs')
 const path = require('path')
 
-
 //mail
 const nodemailer = require('nodemailer');
-
-
 
 const multer  = require('multer')
 // const upload = multer({ dest: 'files/' }) // if same file uploaded then have same name , so dont use this
@@ -25,6 +22,19 @@ filename: function (req, file, cb) {
      cb(null,uniqueSuffix + file.originalname)
 }
 })
+
+
+// const storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//       cb(null, 'uploads/')
+//   },
+//   filename: function (req, file, cb) {
+//       const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+//       cb(null, file.fieldname + '-' + uniqueSuffix + '.jpeg')
+//   }
+// })
+
+
 
 const upload = multer({ storage: storage })
 

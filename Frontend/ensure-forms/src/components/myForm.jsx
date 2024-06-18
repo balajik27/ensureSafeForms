@@ -70,7 +70,7 @@ export const MyForm = ()=>{
 
 
       if (willDelete) {
-        const response = await axios.post('https://appsail-50019946389.development.catalystappsail.in/forms/submitForm',formData,{
+        const response = await axios.post('http://localhost:3000/forms/submitForm',formData,{
           headers : {"Content-Type" : "multipart/form-data"}
         });
         console.log(response.data.message)

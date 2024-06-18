@@ -5,3 +5,4 @@ catalyst.json
 app-config.json
 .catalystrc
 docs
+.vercel
