@@ -181,9 +181,12 @@ router.get('/exportFormPdf', async(req,res)=>{
 
         const filePathName = path.resolve(__dirname , '../ejs_file/htmltopdf.ejs');
         const htmlString = fs.readFileSync(filePathName).toString();
-        let options = {
-            format :'Letter'
-        }    
+        const options = {
+          format: 'Letter',
+          childProcessOptions: {
+            env: { OPENSSL_CONF: '/dev/null' },
+          },
+        }  
         const ejsData = ejs.render(htmlString , data);
         pdf.create(ejsData, options).toFile('./exportedPdfs/userForms.pdf', (err, response) => {
             if (err) {
